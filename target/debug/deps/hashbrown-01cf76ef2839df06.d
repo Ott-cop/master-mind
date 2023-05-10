@@ -1,0 +1,14 @@
+/home/ddo/programação/open_ai/target/debug/deps/hashbrown-01cf76ef2839df06.rmeta: /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/lib.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/macros.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/mod.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/alloc.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/bitmask.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/external_trait_impls/mod.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/map.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/scopeguard.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/set.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/sse2.rs
+
+/home/ddo/programação/open_ai/target/debug/deps/hashbrown-01cf76ef2839df06.d: /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/lib.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/macros.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/mod.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/alloc.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/bitmask.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/external_trait_impls/mod.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/map.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/scopeguard.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/set.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/sse2.rs
+
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/lib.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/macros.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/mod.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/alloc.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/bitmask.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/external_trait_impls/mod.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/map.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/scopeguard.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/set.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/hashbrown-0.12.3/src/raw/sse2.rs:

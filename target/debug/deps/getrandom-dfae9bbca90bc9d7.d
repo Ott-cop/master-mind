@@ -1,0 +1,13 @@
+/home/ddo/programação/testing/target/debug/deps/getrandom-dfae9bbca90bc9d7.rmeta: /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/lib.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error_impls.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util_libc.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/use_file.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/linux_android.rs
+
+/home/ddo/programação/testing/target/debug/deps/libgetrandom-dfae9bbca90bc9d7.rlib: /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/lib.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error_impls.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util_libc.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/use_file.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/linux_android.rs
+
+/home/ddo/programação/testing/target/debug/deps/getrandom-dfae9bbca90bc9d7.d: /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/lib.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error_impls.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util_libc.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/use_file.rs /home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/linux_android.rs
+
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/lib.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/error_impls.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/util_libc.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/use_file.rs:
+/home/ddo/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.9/src/linux_android.rs:
