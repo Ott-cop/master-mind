@@ -33,8 +33,8 @@ fn code_gen() -> Vec<i32> {
 }
 
 fn main() {
-    execute!(stdout(), terminal::SetSize(64, 24)).unwrap();
-    execute!(stdout(), terminal::SetTitle("Master Mind")).unwrap();
+    // execute!(stdout(), terminal::SetSize(64, 24)).unwrap();
+    // execute!(stdout(), terminal::SetTitle("Master Mind")).unwrap();
 
     let emoji_warning = char::from_u32(0x2757).unwrap();
     let emoji_question = char::from_u32(0x2753).unwrap();
@@ -42,7 +42,7 @@ fn main() {
     let emoji_win = char::from_u32(0x2728).unwrap();
 
     loop {
-        Command::new("clear").spawn().unwrap().wait().unwrap();
+        // Command::new("clear").spawn().unwrap().wait().unwrap();
 
         let seta_e = ">".repeat(25);
         let seta_d = "<".repeat(25);
@@ -73,7 +73,7 @@ fn main() {
             }
             
         };
-        Command::new("clear").spawn().unwrap().wait().unwrap();
+        // Command::new("clear").spawn().unwrap().wait().unwrap();
 
         'master_mind: loop {
             println!("{} Master Mind! {}\n", seta_e, seta_d);
