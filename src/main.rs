@@ -1,7 +1,16 @@
-use std::io::{Write, stdout};
+use std::io::{Write};
 use rand::prelude::*;
 use std::process::*;
-use crossterm::{terminal::{self}, execute};
+
+#[cfg(target_os = "linux")]
+fn clear_screen() {
+    Command::new("sh").args(["-c", "clear"]).spawn().unwrap().wait().unwrap();
+}
+
+#[cfg(target_os = "windows")]
+fn clear_screen() {
+    Command::new("cmd").args(["/C", "cls"]).spawn().unwrap().wait().unwrap();
+}
 
 
 fn code_gen() -> Vec<i32> {
@@ -25,7 +34,7 @@ fn code_gen() -> Vec<i32> {
                                     codigo[2] != codigo[3] &&
                                     codigo[3] != codigo[0] && 
                                     codigo[3] != codigo[1] &&
-                                    codigo[3] != codigo[2] {
+                                    codigo[3] != codigo[2] {                      
             break;
         }
     }
@@ -33,16 +42,13 @@ fn code_gen() -> Vec<i32> {
 }
 
 fn main() {
-    // execute!(stdout(), terminal::SetSize(64, 24)).unwrap();
-    // execute!(stdout(), terminal::SetTitle("Master Mind")).unwrap();
-
     let emoji_warning = char::from_u32(0x2757).unwrap();
     let emoji_question = char::from_u32(0x2753).unwrap();
     let emoji_lose = char::from_u32(0x274C).unwrap();
     let emoji_win = char::from_u32(0x2728).unwrap();
 
     loop {
-        // Command::new("clear").spawn().unwrap().wait().unwrap();
+        clear_screen();
 
         let seta_e = ">".repeat(25);
         let seta_d = "<".repeat(25);
@@ -73,9 +79,11 @@ fn main() {
             }
             
         };
-        // Command::new("clear").spawn().unwrap().wait().unwrap();
+        clear_screen();
 
         'master_mind: loop {
+            
+
             println!("{} Master Mind! {}\n", seta_e, seta_d);
 
             let mut pos_correta = 0;
@@ -149,7 +157,7 @@ fn main() {
                                 let seta_d = "<".repeat(24);
                                 println!("{} Você acertou!! {}", seta_e, seta_d);
                                 std::io::stdin().read_line(&mut "".to_string()).unwrap();
-
+                                
                                 break 'master_mind;
                             }
 
@@ -162,7 +170,7 @@ fn main() {
                                 println!("{} Game Over! {}", seta_e, seta_d);
                                 
                                 std::io::stdin().read_line(&mut "".to_string()).unwrap();
-
+                              
                                 break 'master_mind;
                             }
                         }
