@@ -1,8 +1,7 @@
-use std::io::{Write};
+use std::io::{self, Write};
 use rand::prelude::*;
 use std::process::*;
-
-
+// use std::collections::HashMap;
 
 fn main() {
     let emoji_warning = char::from_u32(0x2757).unwrap();
@@ -17,135 +16,84 @@ fn main() {
 
         println!("{} Master Mind! {}\n", seta_e, seta_d);
 
-        let codigo = code_gen();
+        let codigo = generate_code();
 
         println!("{:?}", codigo);
 
-        let mut num_palpites = loop {
-            let mut palpites = String::new();
-            print!("Número de palpites: \n>>> ");
-            std::io::stdout().flush().unwrap();
-            
-            std::io::stdin().read_line(&mut palpites).unwrap();
-            let palpites = palpites.trim().parse::<i32>();
-            if palpites.is_err() {
-                println!("\n[{}] Digite apenas valores válidos\n\n", emoji_warning);
-            }
-            else {
-                let palpites = palpites.unwrap();
-                if palpites == 0 {
-                    println!("\n[{}] Digite um número maior!\n\n", emoji_warning);
-                }
-                else {
-                    break palpites;
-                }
-            }
-            
-        };
+        let mut guesses_number = get_guesses_number();
+
         clear_screen();
 
-        'master_mind: loop {
-            
-            println!("{} Master Mind! {}\n", seta_e, seta_d);
-
+        loop {
             let mut pos_correta = 0;
             let mut num_existente = 0;
+
+            println!("{} Master Mind! {}\n", seta_e, seta_d);
             
             let mut buf = String::new();
             
-            print!("[{}] Chance(s) sobrando...\n\n[{}] Digite seu palpite: \n>>> ", num_palpites, emoji_question);
+            print!("[{}] Chance(s) sobrando...\n\n[{}] Digite seu palpite: \n>>> ", guesses_number, emoji_question);
             std::io::stdout().flush().unwrap();
             
             std::io::stdin().read_line(&mut buf).unwrap();
 
-            let buf: Vec<&str> = buf.split(' ').collect();
+            let buf: Vec<char> = buf.chars().filter(|&c| !c.is_whitespace()).collect();
 
-            let mut buf_int: Vec<i32> = Vec::new();
+            let mut guess_is_valid: bool = true;
+            for i in 0..buf.len() { 
+                let ver = buf[i].to_string().parse::<i32>();
+                if ver.is_err() {
+                    guess_is_valid = false;
+                    break;
+                } 
+            }
+            if !guess_is_valid {
+                println!("\n[{}] Digite apenas valores válidos!\n\n", emoji_warning);
+                continue;
+            }
 
-            if buf.len() == 4 {
-                'ver: for i in 0..buf.len() {
-                    let ver = buf[i].trim().parse::<i32>();
+            if buf.len() != codigo.len() {
+                println!("\n[{}] Digite a quantidade certa de valores!\n\n", emoji_warning);
+                continue;
+            }
 
-                    if ver.is_err() {
-                        println!("\n[{}] Digite apenas valores válidos!\n\n", emoji_warning);
+            let stringed_vec_codigo: Vec<String> = codigo.iter().map(|&num| num.to_string()).collect();
+            let stringed_vec_guess: Vec<String> = buf.iter().map(|&num| num.to_string()).collect();
+            
+            if stringed_vec_guess == stringed_vec_codigo {
+                let seta_e = ">".repeat(24);
+                let seta_d = "<".repeat(24);
+                println!("{} Você acertou!! {}", seta_e, seta_d);
+                std::io::stdin().read_line(&mut "".to_string()).unwrap();
+                break;
+            }
+            
+            guesses_number -= 1;
+            if guesses_number == 0 {
+                let seta_e = ">".repeat(26);
+                let seta_d = "<".repeat(26);
+                println!("[{}] O valor era => {:?}\n\n", emoji_lose, stringed_vec_codigo.join(""));
+                println!("Pressione ENTER para continuar...");
+                println!("{} Game Over! {}", seta_e, seta_d);
+                std::io::stdin().read_line(&mut "".to_string()).unwrap();
+                break;
+            }
+            
+            for i in 0..buf.len() {
+                let ver = buf[i].to_string().parse::<i32>().unwrap();
 
-                        break 'ver;
-                    } 
-                    else {
-                        let ver = ver.unwrap();
+                if ver == codigo[i] {
+                    pos_correta += 1;
+                }
 
-                        buf_int.push(ver);
-
-                        if ver == codigo[i] {
-                            pos_correta += 1;
-                            
-                        }
-                        
-                        if buf_int.len() == 4 {
-                            num_palpites = num_palpites - 1;
-                            
-                            if buf_int[0] == codigo[0] || 
-                                                            buf_int[0] == codigo[1] ||
-                                                            buf_int[0] == codigo[2] ||
-                                                            buf_int[0] == codigo[3] {
-                                num_existente += 1;
-                            }
-
-                            if buf_int[1] == codigo[0] || 
-                                                            buf_int[1] == codigo[1] ||
-                                                            buf_int[1] == codigo[2] ||
-                                                            buf_int[1] == codigo[3] {
-                                num_existente += 1;
-                            }
-
-                            if buf_int[2] == codigo[0] || 
-                                                            buf_int[2] == codigo[1] ||
-                                                            buf_int[2] == codigo[2] ||
-                                                            buf_int[2] == codigo[3] {
-                                num_existente += 1;
-                            }
-
-                            if buf_int[3] == codigo[0] || 
-                                                            buf_int[3] == codigo[1] ||
-                                                            buf_int[3] == codigo[2] ||
-                                                            buf_int[3] == codigo[3] {
-                                num_existente += 1;
-                            }
-
-                            println!("\n[{}] {} número(s) correto(s), [{}{}] {} número(s) na(s) posição(ões) correta(s)\n\n", emoji_win, num_existente, emoji_win, emoji_win, pos_correta);
-
-                            if buf_int == codigo {
-                                let seta_e = ">".repeat(24);
-                                let seta_d = "<".repeat(24);
-                                println!("{} Você acertou!! {}", seta_e, seta_d);
-                                std::io::stdin().read_line(&mut "".to_string()).unwrap();
-                                
-                                break 'master_mind;
-                            }
-
-                            if num_palpites == 0 {
-                                let seta_e = ">".repeat(26);
-                                let seta_d = "<".repeat(26);
-                                
-                                println!("[{}] O valor era => {:?}\n\n", emoji_lose, codigo);
-                                println!("Pressione ENTER para continuar...");
-                                println!("{} Game Over! {}", seta_e, seta_d);
-                                
-                                std::io::stdin().read_line(&mut "".to_string()).unwrap();
-                              
-                                break 'master_mind;
-                            }
-                        }
-                    }
+                if codigo.contains(&ver) {
+                    num_existente += 1;
                 }
             }
-            else {
-                println!("\n[{}] Digite a quantidade certa de valores!\n\n", emoji_warning);
-            }  
+            println!("\n[{}] {} número(s) correto(s), [{}{}] {} número(s) na(s) posição(ões) correta(s)\n\n", emoji_win, num_existente, emoji_win, emoji_win, pos_correta);
         }
     }    
 }
-    
     
 #[cfg(target_os = "linux")]
 fn clear_screen() {
@@ -157,31 +105,83 @@ fn clear_screen() {
     Command::new("cmd").args(["/C", "cls"]).spawn().unwrap().wait().unwrap();
 }
 
-
-fn code_gen() -> Vec<i32> {
-    let lista = vec![1, 2, 3, 4, 5, 6];
-    let mut codigo = vec![1; 4];
+fn generate_code() -> Vec<i32> {
+    let lista = [1, 2, 3, 4, 5, 6];
     let mut rng = thread_rng();
-    loop {
-        codigo[0] = *lista.choose(&mut rng).unwrap();
-        codigo[1] = *lista.choose(&mut rng).unwrap();
-        codigo[2] = *lista.choose(&mut rng).unwrap();
-        codigo[3] = *lista.choose(&mut rng).unwrap();
 
-        if codigo[0] != codigo[1] && 
-                                    codigo[0] != codigo[2] &&
-                                    codigo[0] != codigo[3] &&
-                                    codigo[1] != codigo[0] && 
-                                    codigo[1] != codigo[2] &&
-                                    codigo[1] != codigo[3] &&
-                                    codigo[2] != codigo[0] && 
-                                    codigo[2] != codigo[1] &&
-                                    codigo[2] != codigo[3] &&
-                                    codigo[3] != codigo[0] && 
-                                    codigo[3] != codigo[1] &&
-                                    codigo[3] != codigo[2] {                      
-            break;
+    let mut codigo = Vec::with_capacity(4);
+
+    while codigo.len() < 4 {
+        let num = *lista.choose(&mut rng).unwrap();
+        if !codigo.contains(&num) {
+            codigo.push(num);
         }
     }
+
     codigo
 }
+
+fn get_guesses_number() -> i32 {
+    let emoji_warning = char::from_u32(0x2757).unwrap();
+    loop {
+        print!("Número de palpites: \n>>> ");
+        io::stdout().flush().unwrap();
+        
+        let mut palpites = String::new();
+        io::stdin().read_line(&mut palpites).unwrap();
+        
+        let num = palpites.trim().parse::<i32>();
+        if num.is_err() {
+            println!("\n[{}] Digite apenas valores válidos\n\n", emoji_warning);
+            continue;
+        }
+
+        let num = num.unwrap();
+        if num <= 0 {
+            println!("\n[{}] Digite um número maior que zero!\n\n", emoji_warning);
+            continue;
+        }
+        return num;
+    }
+}
+
+
+        // let mut code_array: Vec<String> = vec![];
+        // for _ in 0..299 {
+        //     let code = generate_code();
+        //     code_array.push(code.iter().map(|&num| num.to_string()).collect());
+        // }
+
+        // let mut code_counts: HashMap<&String, u32> = HashMap::new();
+
+        // for code in &code_array {
+        //     let count = code_counts.entry(code).or_insert(0);
+        //     *count += 1;
+        // }
+
+        // let mut sorted_code_counts: Vec<(&&String, &u32)> = code_counts.iter().collect();
+        // sorted_code_counts.sort_by(|a, b| a.0.cmp(b.0));
+
+        // for (code, count) in &sorted_code_counts {
+        //     println!("Código {}: ocorre {} vez(es)", code, count);
+        // }
+
+                // let mut code_array: Vec<String> = vec![];
+        // for _ in 0..299 {
+        //     let code = generate_code();
+        //     code_array.push(code.iter().map(|&num| num.to_string()).collect());
+        // }
+
+        // let mut code_counts: HashMap<&String, u32> = HashMap::new();
+
+        // for code in &code_array {
+        //     let count = code_counts.entry(code).or_insert(0);
+        //     *count += 1;
+        // }
+
+        // let mut sorted_code_counts: Vec<(&&String, &u32)> = code_counts.iter().collect();
+        // sorted_code_counts.sort_by(|a, b| a.0.cmp(b.0));
+
+        // for (code, count) in &sorted_code_counts {
+        //     println!("Código {}: ocorre {} vez(es)", code, count);
+        // }
