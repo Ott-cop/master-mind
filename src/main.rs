@@ -1,7 +1,6 @@
 use std::io::{self, Write};
 use rand::prelude::*;
 use std::process::*;
-// use std::collections::HashMap;
 
 fn main() {
     let emoji_warning = char::from_u32(0x2757).unwrap();
@@ -146,42 +145,4 @@ fn get_guesses_number() -> i32 {
 }
 
 
-        // let mut code_array: Vec<String> = vec![];
-        // for _ in 0..299 {
-        //     let code = generate_code();
-        //     code_array.push(code.iter().map(|&num| num.to_string()).collect());
-        // }
-
-        // let mut code_counts: HashMap<&String, u32> = HashMap::new();
-
-        // for code in &code_array {
-        //     let count = code_counts.entry(code).or_insert(0);
-        //     *count += 1;
-        // }
-
-        // let mut sorted_code_counts: Vec<(&&String, &u32)> = code_counts.iter().collect();
-        // sorted_code_counts.sort_by(|a, b| a.0.cmp(b.0));
-
-        // for (code, count) in &sorted_code_counts {
-        //     println!("Código {}: ocorre {} vez(es)", code, count);
-        // }
-
-                // let mut code_array: Vec<String> = vec![];
-        // for _ in 0..299 {
-        //     let code = generate_code();
-        //     code_array.push(code.iter().map(|&num| num.to_string()).collect());
-        // }
-
-        // let mut code_counts: HashMap<&String, u32> = HashMap::new();
-
-        // for code in &code_array {
-        //     let count = code_counts.entry(code).or_insert(0);
-        //     *count += 1;
-        // }
-
-        // let mut sorted_code_counts: Vec<(&&String, &u32)> = code_counts.iter().collect();
-        // sorted_code_counts.sort_by(|a, b| a.0.cmp(b.0));
-
-        // for (code, count) in &sorted_code_counts {
-        //     println!("Código {}: ocorre {} vez(es)", code, count);
-        // }
+      
